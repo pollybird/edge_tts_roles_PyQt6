@@ -107,10 +107,10 @@ class MainWindow(QMainWindow):
         # 蜂鸣声设�?
         self.create_beep_settings(left_layout)
         
-        # 试听说明标签
-        preview_note = QLabel("注意：试听功能支持完整的角色切换、停顿和蜂鸣声效果")
-        preview_note.setStyleSheet(Styles.NOTE_LABEL)
-        left_layout.addWidget(preview_note)
+        # 版权信息标签
+        copyright_note = QLabel("© 2026 泰州姜堰钟毓信息技术有限公司")
+        copyright_note.setStyleSheet(Styles.NOTE_LABEL)
+        left_layout.addWidget(copyright_note)
         
         return left_widget
     
