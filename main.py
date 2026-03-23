@@ -690,10 +690,26 @@ class MainWindow(QMainWindow):
         event.accept()
 
 
+def check_network_connection():
+    """检查网络连接是否正常"""
+    try:
+        # 尝试连接到一个可靠的公共 DNS 服务器
+        import socket
+        socket.create_connection(('8.8.8.8', 53), timeout=5)
+        return True
+    except OSError:
+        return False
+
 def main():
     """主函数"""
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
+    
+    # 检查网络连接
+    if not check_network_connection():
+        from PyQt6.QtWidgets import QMessageBox
+        QMessageBox.critical(None, "网络连接异常", "检测到网络连接异常，程序将退出。")
+        sys.exit(1)
     
     window = MainWindow()
     window.showMaximized()
